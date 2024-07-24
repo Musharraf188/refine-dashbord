@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { ThemedTitleV2 } from "@refinedev/mui";
 
 import { CredentialResponse } from "../interfaces/google";
+import yariga from '../assets/yariga.svg';
 
 // Todo: Update your Google Client ID here
 const GOOGLE_CLIENT_ID =
@@ -26,7 +27,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: GOOGLE_CLIENT_ID,
+          client_id: "process.env.REACT_APP_GOOGLE_CLIENT_ID",
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -53,7 +54,8 @@ export const Login: React.FC = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-      }}
+        backgroundColor : "#fcfcfc"
+      }} 
     >
       <Box
         display="flex"
@@ -72,13 +74,13 @@ export const Login: React.FC = () => {
         <GoogleButton />
 
         <Typography align="center" color={"text.secondary"} fontSize="12px">
-          Powered by
+        
           <img
             style={{ padding: "0 5px" }}
-            alt="Google"
-            src="https://refine.ams3.cdn.digitaloceanspaces.com/superplate-auth-icons%2Fgoogle.svg"
+            alt="yariga logo"
+            src={yariga} 
           />
-          Google
+       
         </Typography>
       </Box>
     </Container>
